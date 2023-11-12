@@ -39,6 +39,8 @@ instance Instr (Integer -> String) where
 -- Machine = (Queue[Instr],Register)
 -- and to implement instance Instr (Machine -> Machine)?
 
+-- these methods depend on `Machine` class providing interface of register I/O
+-- but when implementing prettyprinting for `Machine`, `regOut :: String -> Reg`
 instance Machine m => Instr (m -> m) where
   addO rn m =
     let reg  = regOut m
